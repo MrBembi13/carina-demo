@@ -17,6 +17,7 @@ package com.qaprosoft.carina.demo.gui.pages;
 
 import java.util.List;
 
+import com.qaprosoft.carina.demo.gui.components.Header;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -35,6 +36,9 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//div[contains(@class, 'brandmenu-v2')]//a")
     private List<ExtendedWebElement> brandLinks;
 
+    @FindBy(id = "header")
+    private Header header;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -42,6 +46,8 @@ public class HomePage extends AbstractPage {
     public FooterMenu getFooterMenu() {
         return footerMenu;
     }
+
+    public Header getHeader(){return header;}
 
     public BrandModelsPage selectBrand(String brand) {
         LOGGER.info("selecting '" + brand + "' brand...");

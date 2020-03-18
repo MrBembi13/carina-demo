@@ -1,3 +1,4 @@
+/*
 package com.qaprosoft.carina.demo.api.soap;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
@@ -24,4 +25,4 @@ public class CountryInfoConfiguration {
         return countryInfoClient;
     }
 
-}
+}*/
