@@ -112,22 +112,13 @@ public class WebSampleTest extends AbstractTest {
         }
     }
 
-    @Test
-    public void testBaseHeaderElements(){
+    @Test(description = "Test for verify header basic elements are present")
+    @MethodOwner(owner = "Vasyl Rudyk")
+    public void testHeaderBasicElements(){
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
-        Assert.assertTrue(homePage.getHeader().checkIfBurgerMenuPresent(), "Burger menu was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfLogoPresent(), "Logo was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfSearchLabelPresent(), "Search label was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfTipButtonPresent(), "Tip button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfFacebookButtonPresent(), "Facebook button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfTwitterButtonPresent(), "Twitter button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfInstagramButtonPresent(), "Instagram button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfYouTubeButtonPresent(), "YouTube button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfRSSButtonPresent(), "RSS button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfLogInButtonPresent(), "Log in button was not found!");
-        Assert.assertTrue(homePage.getHeader().checkIfSignUpButtonPresent(), "Sign up button was not found!");
+        homePage.getHeader().verifyHeaderBasicElements();
     }
 }
