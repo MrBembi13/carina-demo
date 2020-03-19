@@ -1,3 +1,4 @@
+/*
 package com.qaprosoft.carina.demo.api.soap;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
@@ -20,5 +21,4 @@ public class CountryInfoClient extends WebServiceGatewaySupport {
                 .marshalSendAndReceive(R.TESTDATA.get("ws.soap.wsdl.url"), capitalCity,
                         new SoapActionCallback(String.format("%s/%s", R.TESTDATA.get("ws.soap.wsdl.tns"), "CapitalCity")));
     }
-
-}
+}*/
