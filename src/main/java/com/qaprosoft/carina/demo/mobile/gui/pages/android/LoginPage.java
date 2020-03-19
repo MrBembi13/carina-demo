@@ -79,4 +79,13 @@ public class LoginPage extends LoginPageBase {
 		return clickLoginBtn();
 	}
 
+	@Override
+	public boolean isPageOpened() {
+		return privacyPolicyCheckbox.isElementPresent();
+	}
+
+	@Override
+	public boolean isLoginButtonDoesntActive() {
+		return loginBtn.isClickable();
+	}
 }
