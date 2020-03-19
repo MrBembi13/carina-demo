@@ -121,7 +121,7 @@ public class WebSampleTest extends AbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
         SoftAssert softAssert = new SoftAssert();
-        homePage.getHeader().verifyHeaderBasicElements();
+        homePage.getHeader().verifyHeaderBasicElements(softAssert);
         softAssert.assertAll();
     }
 }

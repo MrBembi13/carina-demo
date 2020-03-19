@@ -47,9 +47,7 @@ public class Header extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public void verifyHeaderBasicElements() {
-        SoftAssert softAssert = new SoftAssert();
-
+    public void verifyHeaderBasicElements(SoftAssert softAssert) {
         softAssert.assertTrue(burgerMenuButton.isElementPresent(), "Burger menu was not found!");
         softAssert.assertTrue(logoButton.isElementPresent(), "Logo was not found!");
         softAssert.assertTrue(searchLabel.isElementPresent(), "Search label was not found!");
