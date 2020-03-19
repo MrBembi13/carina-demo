@@ -14,6 +14,9 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
 @DeviceType(pageType = Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
 
+	@FindBy(className = "android.widget.LinearLayout")
+	private ExtendedWebElement loginPage;
+
 	@FindBy(id = "name")
 	private ExtendedWebElement nameInputField;
 
@@ -79,4 +82,13 @@ public class LoginPage extends LoginPageBase {
 		return clickLoginBtn();
 	}
 
+	@Override
+	public boolean isPageOpened() {
+		return loginPage.isElementPresent();
+	}
+
+	@Override
+	public boolean isLoginButtonDoesntActine(){
+		return loginBtn.isClickable();
+	}
 }

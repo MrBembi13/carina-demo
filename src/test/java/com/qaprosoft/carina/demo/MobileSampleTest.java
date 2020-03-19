@@ -81,4 +81,22 @@ public class MobileSampleTest extends AbstractTest {
         Assert.assertTrue(uiElements.isOthersRadioButtonSelected(), "Others radio button was not selected!");
     }
 
+    @Test(description = "Test")
+    @MethodOwner(owner = "Vasyl Rudyk")
+    public void testLoginButtonIsDoesntActive() {
+        String username = "Test user";
+        String password = RandomStringUtils.randomAlphabetic(10);
+
+        WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
+        Assert.assertTrue(welcomePage.isPageOpened(), "Welcome page was not opened");
+
+        LoginPageBase loginPage = welcomePage.clickNextBtn();
+        Assert.assertTrue(loginPage.isPageOpened(), "Login page was not opened!");
+
+        loginPage.typeName(username);
+        loginPage.typePassword(password);
+        loginPage.selectMaleSex();
+
+        Assert.assertFalse(loginPage.isLoginButtonDoesntActine(), "Login button is active when it would be disable!");
+    }
 }

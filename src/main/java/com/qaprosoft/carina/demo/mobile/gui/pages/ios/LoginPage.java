@@ -85,4 +85,8 @@ public class LoginPage extends LoginPageBase {
 		return clickLoginBtn();
 	}
 
+	@Override
+	public boolean isLoginButtonDoesntActine(){
+		return loginBtn.clickIfPresent();
+	}
 }
