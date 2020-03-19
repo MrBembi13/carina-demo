@@ -37,10 +37,11 @@ import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.ModelInfoPage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import org.testng.asserts.SoftAssert;
 
 /**
  * This sample shows how create Web test.
- * 
+ *
  * @author qpsdemo
  */
 public class WebSampleTest extends AbstractTest {
@@ -55,10 +56,10 @@ public class WebSampleTest extends AbstractTest {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
-        
+
         //Closing advertising if it's displayed
         homePage.getWeValuePrivacyAd().closeAdIfPresent();
-        
+
         // Select phone brand
         homePage = new HomePage(getDriver());
         BrandModelsPage productsPage = homePage.selectBrand(brand);
@@ -92,17 +93,17 @@ public class WebSampleTest extends AbstractTest {
         Assert.assertEquals(specs.get(1).readSpec(SpecType.ANNOUNCED), "2015, June");
         Assert.assertEquals(specs.get(2).readSpec(SpecType.ANNOUNCED), "2017, June");
     }
-    
+
     @Test(description = "JIRA#AUTO-0010")
     @MethodOwner(owner = "qpsdemo")
     public void testNewsSearch() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened!");
-        
+
         NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
         Assert.assertTrue(newsPage.isPageOpened(), "News page is not opened!");
-        
+
         final String searchQ = "iphone";
         List<NewsItem> news = newsPage.searchNews(searchQ);
         Assert.assertFalse(CollectionUtils.isEmpty(news), "News not found!");
@@ -114,11 +115,13 @@ public class WebSampleTest extends AbstractTest {
 
     @Test(description = "Test for verify header basic elements are present")
     @MethodOwner(owner = "Vasyl Rudyk")
-    public void testHeaderBasicElements(){
+    public void testHeaderBasicElements() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
+        SoftAssert softAssert = new SoftAssert();
         homePage.getHeader().verifyHeaderBasicElements();
+        softAssert.assertAll();
     }
 }

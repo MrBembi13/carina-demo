@@ -6,6 +6,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class Header extends AbstractUIObject {
 
@@ -46,17 +47,19 @@ public class Header extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public void verifyHeaderBasicElements(){
-        Assert.assertTrue(burgerMenuButton.isElementPresent(), "Burger menu was not found!");
-        Assert.assertTrue(logoButton.isElementPresent(), "Logo was not found!");
-        Assert.assertTrue(searchLabel.isElementPresent(), "Search label was not found!");
-        Assert.assertTrue(tipButton.isElementPresent(), "Tip button was not found!");
-        Assert.assertTrue(facebookButton.isElementPresent(), "Facebook button was not found!");
-        Assert.assertTrue(twitterButton.isElementPresent(), "Twitter button was not found!");
-        Assert.assertTrue(instagramButton.isElementPresent(), "Instagram button was not found!");
-        Assert.assertTrue(youTubeButton.isElementPresent(), "YouTube button was not found!");
-        Assert.assertTrue(rssButton.isElementPresent(), "RSS button was not found!");
-        Assert.assertTrue(logInButton.isElementPresent(), "Log in button was not found!");
-        Assert.assertTrue(signUpButton.isElementPresent(), "Sign up button was not found!");
+    public void verifyHeaderBasicElements() {
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertTrue(burgerMenuButton.isElementPresent(), "Burger menu was not found!");
+        softAssert.assertTrue(logoButton.isElementPresent(), "Logo was not found!");
+        softAssert.assertTrue(searchLabel.isElementPresent(), "Search label was not found!");
+        softAssert.assertTrue(tipButton.isElementPresent(), "Tip button was not found!");
+        softAssert.assertTrue(facebookButton.isElementPresent(), "Facebook button was not found!");
+        softAssert.assertTrue(twitterButton.isElementPresent(), "Twitter button was not found!");
+        softAssert.assertTrue(instagramButton.isElementPresent(), "Instagram button was not found!");
+        softAssert.assertTrue(youTubeButton.isElementPresent(), "YouTube button was not found!");
+        softAssert.assertTrue(rssButton.isElementPresent(), "RSS button was not found!");
+        softAssert.assertTrue(logInButton.isElementPresent(), "Log in button was not found!");
+        softAssert.assertTrue(signUpButton.isElementPresent(), "Sign up button was not found!");
     }
 }
