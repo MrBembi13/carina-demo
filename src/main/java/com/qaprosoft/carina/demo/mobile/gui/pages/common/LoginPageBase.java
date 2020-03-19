@@ -24,6 +24,6 @@ public abstract class LoginPageBase extends AbstractPage {
 
 	public abstract CarinaDescriptionPageBase login();
 
-	public abstract boolean isLoginButtonDoesntActine();
+	public abstract boolean isLoginButtonDoesntActive();
 
 }

@@ -15,78 +15,78 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
 @DeviceType(pageType = Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class LoginPage extends LoginPageBase {
 
-	@FindBy(xpath = "type = 'XCUIElementTypeTextField'")
-	@Predicate
-	private ExtendedWebElement nameInputField;
+    @FindBy(xpath = "type = 'XCUIElementTypeTextField'")
+    @Predicate
+    private ExtendedWebElement nameInputField;
 
-	@FindBy(xpath = "type = 'XCUIElementTypeSecureTextField'")
-	@Predicate
-	private ExtendedWebElement passwordInputField;
+    @FindBy(xpath = "type = 'XCUIElementTypeSecureTextField'")
+    @Predicate
+    private ExtendedWebElement passwordInputField;
 
-	@FindBy(xpath = "name = 'Male' AND type = 'XCUIElementTypeButton'")
-	@Predicate
-	private ExtendedWebElement maleRadioBtn;
+    @FindBy(xpath = "name = 'Male' AND type = 'XCUIElementTypeButton'")
+    @Predicate
+    private ExtendedWebElement maleRadioBtn;
 
-	@FindBy(xpath = "**/XCUIElementTypeButton[`name == 'Female'`]")
-	@ClassChain
-	private ExtendedWebElement femaleRadioBtn;
+    @FindBy(xpath = "**/XCUIElementTypeButton[`name == 'Female'`]")
+    @ClassChain
+    private ExtendedWebElement femaleRadioBtn;
 
-	@FindBy(xpath = "**/XCUIElementTypeButton[`name CONTAINS 'checkbox'`]")
-	@ClassChain
-	private ExtendedWebElement privacyPolicyCheckbox;
+    @FindBy(xpath = "**/XCUIElementTypeButton[`name CONTAINS 'checkbox'`]")
+    @ClassChain
+    private ExtendedWebElement privacyPolicyCheckbox;
 
-	@FindBy(xpath = "name = 'LOGIN'")
-	@Predicate
-	private ExtendedWebElement loginBtn;
+    @FindBy(xpath = "name = 'LOGIN'")
+    @Predicate
+    private ExtendedWebElement loginBtn;
 
-	public LoginPage(WebDriver driver) {
-		super(driver);
-	}
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
-	@Override
-	public void typeName(String name) {
-		nameInputField.type(name);
-	}
+    @Override
+    public void typeName(String name) {
+        nameInputField.type(name);
+    }
 
-	@Override
-	public void typePassword(String password) {
-		passwordInputField.type(password);
-	}
+    @Override
+    public void typePassword(String password) {
+        passwordInputField.type(password);
+    }
 
-	@Override
-	public void selectMaleSex() {
-		maleRadioBtn.click();
-	}
+    @Override
+    public void selectMaleSex() {
+        maleRadioBtn.click();
+    }
 
-	@Override
-	public void checkPrivacyPolicyCheckbox() {
-		privacyPolicyCheckbox.click();
-	}
+    @Override
+    public void checkPrivacyPolicyCheckbox() {
+        privacyPolicyCheckbox.click();
+    }
 
-	@Override
-	public CarinaDescriptionPageBase clickLoginBtn() {
-		loginBtn.click();
-		return initPage(getDriver(), CarinaDescriptionPageBase.class);
-	}
+    @Override
+    public CarinaDescriptionPageBase clickLoginBtn() {
+        loginBtn.click();
+        return initPage(getDriver(), CarinaDescriptionPageBase.class);
+    }
 
-	@Override
-	public boolean isLoginBtnActive() {
-		return Boolean.parseBoolean(loginBtn.getAttribute("enabled"));
-	}
+    @Override
+    public boolean isLoginBtnActive() {
+        return Boolean.parseBoolean(loginBtn.getAttribute("enabled"));
+    }
 
-	@Override
-	public CarinaDescriptionPageBase login(){
-		String username = "Test user";
-		String password = RandomStringUtils.randomAlphabetic(10);
-		typeName(username);
-		typePassword(password);
-		selectMaleSex();
-		checkPrivacyPolicyCheckbox();
-		return clickLoginBtn();
-	}
+    @Override
+    public CarinaDescriptionPageBase login() {
+        String username = "Test user";
+        String password = RandomStringUtils.randomAlphabetic(10);
+        typeName(username);
+        typePassword(password);
+        selectMaleSex();
+        checkPrivacyPolicyCheckbox();
+        return clickLoginBtn();
+    }
 
-	@Override
-	public boolean isLoginButtonDoesntActine(){
-		return loginBtn.clickIfPresent();
-	}
+    @Override
+    public boolean isLoginButtonDoesntActive() {
+        return loginBtn.isClickable();
+    }
 }
