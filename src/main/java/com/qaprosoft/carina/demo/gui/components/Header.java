@@ -110,4 +110,35 @@ public class Header extends AbstractUIObject {
         logInButton.click();
         return new FailedLoginPage(driver);
     }
+
+    public FailedLoginPage logInFailedByPassword() {
+        String email = "s9rowa@mail.ru";
+        String password = "changemy";
+
+        openFieldsForLogIn();
+        typeEmail(email);
+        typePassword(password);
+        logInButton.click();
+        return new FailedLoginPage(driver);
+    }
+
+    public void logInByWrongFormatEmail() {
+        String email = "s9rowamail.ru";
+        String password = "changeme";
+
+        openFieldsForLogIn();
+        typeEmail(email);
+        typePassword(password);
+        logInButton.click();
+    }
+
+    public void logInByWrongFormatPassword() {
+        String email = "s9rowa@mail.ru";
+        String password = "chan";
+
+        openFieldsForLogIn();
+        typeEmail(email);
+        typePassword(password);
+        logInButton.click();
+    }
 }

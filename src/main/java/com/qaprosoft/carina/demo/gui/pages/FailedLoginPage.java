@@ -18,4 +18,8 @@ public class FailedLoginPage extends AbstractPage {
     public boolean isLoginFailedByEmail() {
         return loginFailedField.isElementWithTextPresent("Reason: User record not found.");
     }
+
+    public boolean isLoginFailedByPassword() {
+        return loginFailedField.isElementWithTextPresent("Reason: Wrong password.");
+    }
 }
