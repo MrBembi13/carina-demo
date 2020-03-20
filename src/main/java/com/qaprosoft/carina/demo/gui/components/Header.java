@@ -2,6 +2,7 @@ package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.demo.gui.pages.FailedLoginPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -85,7 +86,7 @@ public class Header extends AbstractUIObject {
         passwordLabel.type(password);
     }
 
-    public void logIn() {
+    public void logInGood() {
         String email = "s9rowa@mail.ru";
         String password = "changeme";
 
@@ -97,5 +98,16 @@ public class Header extends AbstractUIObject {
 
     public boolean isLogOutIconButtonPresent() {
         return logOutIconButton.isElementPresent();
+    }
+
+    public FailedLoginPage logInFailedByEmail() {
+        String email = "s9rowao@mail.ru";
+        String password = "changeme";
+
+        openFieldsForLogIn();
+        typeEmail(email);
+        typePassword(password);
+        logInButton.click();
+        return new FailedLoginPage(driver);
     }
 }
