@@ -44,18 +44,6 @@ public class Header extends AbstractUIObject {
     @FindBy(xpath = ".//a[@class='signup-icon no-margin-right']")
     private ExtendedWebElement signUpButton;
 
-    @FindBy(id = "email")
-    private ExtendedWebElement emailLabel;
-
-    @FindBy(id = "upass")
-    private ExtendedWebElement passwordLabel;
-
-    @FindBy(id = "nick-submit")
-    private ExtendedWebElement logInButton;
-
-    @FindBy(xpath = ".//i[@class='head-icon icon-signout']")
-    private ExtendedWebElement logOutIconButton;
-
     public Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
@@ -72,73 +60,5 @@ public class Header extends AbstractUIObject {
         softAssert.assertTrue(rssButton.isElementPresent(), "RSS button was not found!");
         softAssert.assertTrue(logInIcon.isElementPresent(), "Log in button was not found!");
         softAssert.assertTrue(signUpButton.isElementPresent(), "Sign up button was not found!");
-    }
-
-    public void openFieldsForLogIn() {
-        logInIcon.click();
-    }
-
-    public void typeEmail(String email) {
-        emailLabel.type(email);
-    }
-
-    public void typePassword(String password) {
-        passwordLabel.type(password);
-    }
-
-    public void logInGood() {
-        String email = "s9rowa@mail.ru";
-        String password = "changeme";
-
-        openFieldsForLogIn();
-        typeEmail(email);
-        typePassword(password);
-        logInButton.click();
-    }
-
-    public boolean isLogOutIconButtonPresent() {
-        return logOutIconButton.isElementPresent();
-    }
-
-    public FailedLoginPage logInFailedByEmail() {
-        String email = "s9rowao@mail.ru";
-        String password = "changeme";
-
-        openFieldsForLogIn();
-        typeEmail(email);
-        typePassword(password);
-        logInButton.click();
-        return new FailedLoginPage(driver);
-    }
-
-    public FailedLoginPage logInFailedByPassword() {
-        String email = "s9rowa@mail.ru";
-        String password = "changemy";
-
-        openFieldsForLogIn();
-        typeEmail(email);
-        typePassword(password);
-        logInButton.click();
-        return new FailedLoginPage(driver);
-    }
-
-    public void logInByWrongFormatEmail() {
-        String email = "s9rowamail.ru";
-        String password = "changeme";
-
-        openFieldsForLogIn();
-        typeEmail(email);
-        typePassword(password);
-        logInButton.click();
-    }
-
-    public void logInByWrongFormatPassword() {
-        String email = "s9rowa@mail.ru";
-        String password = "chan";
-
-        openFieldsForLogIn();
-        typeEmail(email);
-        typePassword(password);
-        logInButton.click();
     }
 }
