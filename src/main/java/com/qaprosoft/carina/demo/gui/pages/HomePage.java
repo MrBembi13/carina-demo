@@ -18,7 +18,7 @@ package com.qaprosoft.carina.demo.gui.pages;
 import java.util.List;
 
 import com.qaprosoft.carina.demo.gui.components.Header;
-import com.qaprosoft.carina.demo.gui.components.Login;
+import com.qaprosoft.carina.demo.gui.components.LoginForm;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -40,9 +40,6 @@ public class HomePage extends AbstractPage {
     @FindBy(id = "header")
     private Header header;
 
-    @FindBy(id = "header")
-    private Login login;
-
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -53,10 +50,6 @@ public class HomePage extends AbstractPage {
 
     public Header getHeader() {
         return header;
-    }
-
-    public Login getLogin() {
-        return login;
     }
 
     public BrandModelsPage selectBrand(String brand) {

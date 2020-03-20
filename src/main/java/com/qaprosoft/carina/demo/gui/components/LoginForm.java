@@ -5,8 +5,9 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
-public class Login extends AbstractUIObject {
+public class LoginForm extends AbstractUIObject {
     @FindBy(id = "login-active")
     private ExtendedWebElement logInIcon;
 
@@ -25,16 +26,17 @@ public class Login extends AbstractUIObject {
     @FindBy(xpath = ".//i[@class='head-icon icon-signout']")
     private ExtendedWebElement logOutIconButton;
 
-    public Login(WebDriver driver, SearchContext searchContext) {
+    public LoginForm(WebDriver driver) {
+        super(driver);
+    }
+
+    public LoginForm(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public boolean isLoginFormPresent() {
-        return loginForm.isElementPresent();
-    }
-
-    public void openFieldsForLogIn() {
+    public void openLoginForm() {
         logInIcon.click();
+        Assert.assertTrue(loginForm.isElementPresent(), "Login form was not opened!");
     }
 
     public void typeEmail(String email) {
@@ -54,11 +56,4 @@ public class Login extends AbstractUIObject {
         typePassword(password);
         logInButton.click();
     }
-/*
-    public FailedLoginPage login(String email, String password) {
-        typeEmail(email);
-        typePassword(password);
-        logInButton.click();
-        return new FailedLoginPage(driver);
-    }   */
 }

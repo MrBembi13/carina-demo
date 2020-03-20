@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
  *
  * @author Vasyl Rudyk
  */
-public class WebLoginTest extends AbstractTest {
+public class WebLoginFormTest extends AbstractTest {
     private static final String EMAIL_GOOD = "s9rowa@mail.ru";
     private static final String PASSWORD_GOOD = "changeme";
     private static final String EMAIL_WRONG = "s9rowa1@mail.ru";
@@ -27,11 +27,10 @@ public class WebLoginTest extends AbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
-        homePage.getLogin().openFieldsForLogIn();
-        Assert.assertTrue(homePage.getLogin().isLoginFormPresent(), "Login form was not opened!");
+        homePage.getHeader().getLoginForm().openLoginForm();
 
-        homePage.getLogin().login(EMAIL_GOOD, PASSWORD_GOOD);
-        Assert.assertTrue(homePage.getLogin().isLogOutIconButtonPresent(), "Lon in was failed!");
+        homePage.getHeader().getLoginForm().login(EMAIL_GOOD, PASSWORD_GOOD);
+        Assert.assertTrue(homePage.getHeader().getLoginForm().isLogOutIconButtonPresent(), "Lon in was failed!");
     }
 
     @Test(description = "Failed test log in by wrong email")
@@ -41,10 +40,9 @@ public class WebLoginTest extends AbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
-        homePage.getLogin().openFieldsForLogIn();
-        Assert.assertTrue(homePage.getLogin().isLoginFormPresent(), "Login form was not opened!");
+        homePage.getHeader().getLoginForm().openLoginForm();
 
-        homePage.getLogin().login(EMAIL_WRONG, PASSWORD_GOOD);
+        homePage.getHeader().getLoginForm().login(EMAIL_WRONG, PASSWORD_GOOD);
         FailedLoginPage failedLoginPage = new FailedLoginPage(getDriver());
         Assert.assertTrue(failedLoginPage.isLoginFailedByEmail(), "Log in was successful when it was failed by email!");
     }
@@ -56,10 +54,9 @@ public class WebLoginTest extends AbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
-        homePage.getLogin().openFieldsForLogIn();
-        Assert.assertTrue(homePage.getLogin().isLoginFormPresent(), "Login form was not opened!");
+        homePage.getHeader().getLoginForm().openLoginForm();
 
-        homePage.getLogin().login(EMAIL_GOOD, PASSWORD_WRONG);
+        homePage.getHeader().getLoginForm().login(EMAIL_GOOD, PASSWORD_WRONG);
         FailedLoginPage failedLoginPage = new FailedLoginPage(getDriver());
         Assert.assertTrue(failedLoginPage.isLoginFailedByPassword(), "Log in was successful when it was failed by password!");
     }
@@ -71,11 +68,10 @@ public class WebLoginTest extends AbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
-        homePage.getLogin().openFieldsForLogIn();
-        Assert.assertTrue(homePage.getLogin().isLoginFormPresent(), "Login form was not opened!");
+        homePage.getHeader().getLoginForm().openLoginForm();
 
-        homePage.getLogin().login(EMAIL_WRONG_FORMAT, PASSWORD_GOOD);
-        Assert.assertFalse(homePage.getLogin().isLogOutIconButtonPresent(), "Lon in was successful when you enter wrong format email!");
+        homePage.getHeader().getLoginForm().login(EMAIL_WRONG_FORMAT, PASSWORD_GOOD);
+        Assert.assertFalse(homePage.getHeader().getLoginForm().isLogOutIconButtonPresent(), "Lon in was successful when you enter wrong format email!");
     }
 
     @Test(description = "Failed test log in by wrong format password")
@@ -85,10 +81,9 @@ public class WebLoginTest extends AbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
-        homePage.getLogin().openFieldsForLogIn();
-        Assert.assertTrue(homePage.getLogin().isLoginFormPresent(), "Login form was not opened!");
+        homePage.getHeader().getLoginForm().openLoginForm();
 
-        homePage.getLogin().login(EMAIL_GOOD, PASSWORD_WRONG_FORMAT);
-        Assert.assertFalse(homePage.getLogin().isLogOutIconButtonPresent(), "Lon in was successful when you enter wrong format password!");
+        homePage.getHeader().getLoginForm().login(EMAIL_GOOD, PASSWORD_WRONG_FORMAT);
+        Assert.assertFalse(homePage.getHeader().getLoginForm().isLogOutIconButtonPresent(), "Lon in was successful when you enter wrong format password!");
     }
 }
