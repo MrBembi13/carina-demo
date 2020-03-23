@@ -38,13 +38,22 @@ public class Header extends AbstractUIObject {
     private ExtendedWebElement rssButton;
 
     @FindBy(id = "login-active")
-    private ExtendedWebElement logInButton;
+    private ExtendedWebElement logInIcon;
 
     @FindBy(xpath = ".//a[@class='signup-icon no-margin-right']")
     private ExtendedWebElement signUpButton;
 
+    @FindBy(id = "login-popup2")
+    private ExtendedWebElement loginForm;
+
     public Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
+    }
+
+    public LoginForm openLoginForm() {
+        logInIcon.click();
+        Assert.assertTrue(loginForm.isElementPresent(), "Login form was not opened!");
+        return new LoginForm(driver);
     }
 
     public void verifyHeaderBasicElements(SoftAssert softAssert) {
@@ -57,7 +66,7 @@ public class Header extends AbstractUIObject {
         softAssert.assertTrue(instagramButton.isElementPresent(), "Instagram button was not found!");
         softAssert.assertTrue(youTubeButton.isElementPresent(), "YouTube button was not found!");
         softAssert.assertTrue(rssButton.isElementPresent(), "RSS button was not found!");
-        softAssert.assertTrue(logInButton.isElementPresent(), "Log in button was not found!");
+        softAssert.assertTrue(logInIcon.isElementPresent(), "Log in button was not found!");
         softAssert.assertTrue(signUpButton.isElementPresent(), "Sign up button was not found!");
     }
 }
