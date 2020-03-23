@@ -5,21 +5,25 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class FailedLoginPage extends AbstractPage {
+public class LoginPage extends AbstractPage {
 
     @FindBy(xpath = "//div[@class='normal-text res-error']")
-    private ExtendedWebElement loginFailedField;
+    private ExtendedWebElement loginField;
 
-    public FailedLoginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
         setPageURL("/login.php3");
     }
 
     public boolean isLoginFailedByEmail() {
-        return loginFailedField.isElementWithTextPresent("Reason: User record not found.");
+        return loginField.isElementWithTextPresent("Reason: User record not found.");
     }
 
     public boolean isLoginFailedByPassword() {
-        return loginFailedField.isElementWithTextPresent("Reason: Wrong password.");
+        return loginField.isElementWithTextPresent("Reason: Wrong password.");
+    }
+
+    public boolean isLoginSuccessful() {
+        return loginField.isElementWithTextPresent("Stand-by for redirect.");
     }
 }

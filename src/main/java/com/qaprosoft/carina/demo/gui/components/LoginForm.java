@@ -2,6 +2,7 @@ package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +11,6 @@ import org.testng.Assert;
 public class LoginForm extends AbstractUIObject {
     @FindBy(id = "login-active")
     private ExtendedWebElement logInIcon;
-
-    @FindBy(id = "login-popup2")
-    private ExtendedWebElement loginForm;
 
     @FindBy(id = "email")
     private ExtendedWebElement emailField;
@@ -34,11 +32,6 @@ public class LoginForm extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public void openLoginForm() {
-        logInIcon.click();
-        Assert.assertTrue(loginForm.isElementPresent(), "Login form was not opened!");
-    }
-
     public void typeEmail(String email) {
         emailField.type(email);
     }
@@ -51,9 +44,10 @@ public class LoginForm extends AbstractUIObject {
         return logOutIconButton.isElementPresent();
     }
 
-    public void login(String email, String password) {
+    public LoginPage login(String email, String password) {
         typeEmail(email);
         typePassword(password);
         logInButton.click();
+        return new LoginPage(driver);
     }
 }

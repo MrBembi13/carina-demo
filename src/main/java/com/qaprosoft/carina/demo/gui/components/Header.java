@@ -2,7 +2,6 @@ package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.pages.FailedLoginPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -44,11 +43,16 @@ public class Header extends AbstractUIObject {
     @FindBy(xpath = ".//a[@class='signup-icon no-margin-right']")
     private ExtendedWebElement signUpButton;
 
+    @FindBy(id = "login-popup2")
+    private ExtendedWebElement loginForm;
+
     public Header(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    public LoginForm getLoginForm() {
+    public LoginForm openLoginForm() {
+        logInIcon.click();
+        Assert.assertTrue(loginForm.isElementPresent(), "Login form was not opened!");
         return new LoginForm(driver);
     }
 
