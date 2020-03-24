@@ -15,6 +15,7 @@
  */
 package com.qaprosoft.carina.demo.gui.components;
 
+import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import org.openqa.selenium.support.FindBys;
 
 public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "Home")
@@ -34,6 +36,9 @@ public class FooterMenu extends AbstractUIObject {
     
     @FindBy(linkText = "News")
     private ExtendedWebElement newsLink;
+
+    @FindBy(linkText = "Glossary")
+    private ExtendedWebElement glossaryLink;
 
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -52,5 +57,10 @@ public class FooterMenu extends AbstractUIObject {
     public NewsPage openNewsPage() {
         newsLink.click();
         return new NewsPage(driver);
+    }
+
+    public GlossaryPage openGlossaryPage() {
+        glossaryLink.click();
+        return new GlossaryPage(driver);
     }
 }

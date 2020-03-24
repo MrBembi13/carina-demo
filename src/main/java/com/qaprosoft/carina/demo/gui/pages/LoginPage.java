@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends AbstractPage {
+    private static final String TEXT_WRONG_EMAIL = "Reason: User record not found.";
+    private static final String TEXT_WRONG_PASSWORD = "Reason: Wrong password.";
 
     @FindBy(xpath = "//div[@class='normal-text res-error']")
     private ExtendedWebElement loginField;
@@ -16,14 +18,10 @@ public class LoginPage extends AbstractPage {
     }
 
     public boolean isLoginFailedByEmail() {
-        return loginField.isElementWithTextPresent("Reason: User record not found.");
+        return loginField.isElementWithTextPresent(TEXT_WRONG_EMAIL);
     }
 
     public boolean isLoginFailedByPassword() {
-        return loginField.isElementWithTextPresent("Reason: Wrong password.");
-    }
-
-    public boolean isLoginSuccessful() {
-        return loginField.isElementWithTextPresent("Stand-by for redirect.");
+        return loginField.isElementWithTextPresent(TEXT_WRONG_PASSWORD);
     }
 }
