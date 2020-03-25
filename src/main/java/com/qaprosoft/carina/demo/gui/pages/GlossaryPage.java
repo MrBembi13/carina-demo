@@ -12,6 +12,9 @@ import java.util.List;
 public class GlossaryPage extends AbstractPage {
     Logger LOGGER = Logger.getLogger(GlossaryPage.class);
 
+    private static final boolean FOR_SORTING = true;
+    private static final boolean NOT_FOR_SORTING = false;
+
     @FindBy(xpath = "//div[@class='st-text']//p")
     private List<ParagraphElement> paragraphGlossaryLinks;
 
@@ -26,7 +29,7 @@ public class GlossaryPage extends AbstractPage {
     public boolean verifyParagraphElementsByFirstLetter() {
         if (paragraphGlossaryLinks.size() == paragraphGlossaryNames.size()) {
             for (int i = 0; i < paragraphGlossaryLinks.size(); i++) {
-                List<String> stringElementList = paragraphGlossaryLinks.get(i).getParagraphGlossaryElements();
+                List<String> stringElementList = paragraphGlossaryLinks.get(i).getParagraphElementsString(NOT_FOR_SORTING);
                 for (String str : stringElementList) {
                     if (str.toUpperCase().charAt(0) == paragraphGlossaryNames.get(i).getText().charAt(0) ||
                             (Character.isDigit(str.charAt(0)) && Character.isDigit(paragraphGlossaryNames.get(i).getText().charAt(0)))) {
@@ -40,6 +43,20 @@ public class GlossaryPage extends AbstractPage {
         } else {
             LOGGER.error("Paragraph's number headers and number texts did not equals!");
             return false;
+        }
+        return true;
+    }
+
+    public boolean verifyParagraphTextByAlphabet() {
+        for (ParagraphElement paragElem: paragraphGlossaryLinks) {
+            List<String> stringElementsList = paragElem.getParagraphElementsString(FOR_SORTING);
+            List<String> sortStringElementsList = paragElem.getSortParagraphElementsString();
+            if (stringElementsList.equals(sortStringElementsList)) {
+                LOGGER.info("Paragraph's text sorted by alphabet!");
+            } else {
+                LOGGER.error("Paragraph's text did not sort by alphabet!");
+                return false;
+            }
         }
         return true;
     }

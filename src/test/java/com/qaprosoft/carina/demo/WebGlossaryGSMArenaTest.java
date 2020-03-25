@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
  */
 
 public class WebGlossaryGSMArenaTest extends AbstractTest {
-    @Test(description = "Test glossary")
+    @Test(description = "Test glossary paragraph's header and text by first letter")
     @MethodOwner(owner = "Vasyl Rudyk")
-    public void testGlossary() {
+    public void testGlossaryParagraphHeaderAndTextByFirstLetter() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
@@ -25,5 +25,18 @@ public class WebGlossaryGSMArenaTest extends AbstractTest {
         Assert.assertTrue(glossaryPage.isPageOpened(), "Glossary page was not opened");
 
         Assert.assertTrue(glossaryPage.verifyParagraphElementsByFirstLetter(), "Link element in Glossary page didn't in alphabetical order!");
+    }
+
+    @Test(description = "Test glossary paragraph's text by alphabet")
+    @MethodOwner(owner = "Vasyl Rudyk")
+    public void testGlossaryParagraphTextByAlphabet() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
+
+        GlossaryPage glossaryPage = homePage.getFooterMenu().openGlossaryPage();
+        Assert.assertTrue(glossaryPage.isPageOpened(), "Glossary page was not opened");
+
+        Assert.assertTrue(glossaryPage.verifyParagraphTextByAlphabet(), "Paragraph's text did not sort by alphabet!");
     }
 }
