@@ -25,7 +25,6 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
-import org.openqa.selenium.support.FindBys;
 
 public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "Home")

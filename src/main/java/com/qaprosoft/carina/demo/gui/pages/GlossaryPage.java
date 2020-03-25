@@ -3,7 +3,6 @@ package com.qaprosoft.carina.demo.gui.pages;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.ParagraphElement;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -28,27 +27,19 @@ public class GlossaryPage extends AbstractPage {
         if (paragraphGlossaryLinks.size() == paragraphGlossaryNames.size()) {
             for (int i = 0; i < paragraphGlossaryLinks.size(); i++) {
                 List<String> stringElementList = paragraphGlossaryLinks.get(i).getParagraphGlossaryElements();
-                for (String e : stringElementList) {
-                    if (StringUtils.indexOfIgnoreCase(e, paragraphGlossaryNames.get(i).getText().substring(0, 1)) == 0) {
-                        LOGGER.info("Paragraph " + paragraphGlossaryNames.get(i).getText() + ": " + e + ".");
-                    } else if (paragraphGlossaryNames.get(i).getText().substring(0, 1).equalsIgnoreCase("0") &&
-                                    (StringUtils.indexOfIgnoreCase(e,"0") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"1") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"2") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"3") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"4") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"5") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"6") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"7") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"8") == 0 ||
-                                            StringUtils.indexOfIgnoreCase(e,"9") == 0 )) {
-                        LOGGER.info("Paragraph " + paragraphGlossaryNames.get(i).getText() + ": " + e);
+                for (String str : stringElementList) {
+                    if (str.toUpperCase().charAt(0) == paragraphGlossaryNames.get(i).getText().charAt(0) ||
+                            (Character.isDigit(str.charAt(0)) && Character.isDigit(paragraphGlossaryNames.get(i).getText().charAt(0)))) {
+                        LOGGER.info("Paragraph " + paragraphGlossaryNames.get(i).getText() + ": " + str + ".");
                     } else {
-                        LOGGER.error("Paragraph (" + paragraphGlossaryNames.get(i).getText() + ") can not have (" + e + ")!");
+                        LOGGER.error("Paragraph (" + paragraphGlossaryNames.get(i).getText() + ") can not have (" + str + ")!");
                         return false;
                     }
                 }
             }
+        } else {
+            LOGGER.error("Paragraph's number headers and number texts did not equals!");
+            return false;
         }
         return true;
     }
