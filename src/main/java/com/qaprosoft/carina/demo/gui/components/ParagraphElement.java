@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ParagraphElement extends AbstractUIObject {
@@ -25,25 +24,11 @@ public class ParagraphElement extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public List<String> getParagraphElementsString(boolean forSortingEnterTrue) {
-        List<String> linkElementsString = new ArrayList<>();
-        if (forSortingEnterTrue)
-            for (ExtendedWebElement eWebElem: linkElements) {
-                linkElementsString.add(eWebElem.getText().toUpperCase());
-            }
-        else for (ExtendedWebElement eWebElem: linkElements) {
-                linkElementsString.add(eWebElem.getText());
-            }
-        LOGGER.info("Method return List<String>: " + linkElementsString);
-        return linkElementsString;
-    }
-
-    public List<String> getSortParagraphElementsString() {
+    public List<String> getParagraphElementsString() {
         List<String> linkElementsString = new ArrayList<>();
         for (ExtendedWebElement eWebElem: linkElements) {
-            linkElementsString.add(eWebElem.getText().toUpperCase());
+                linkElementsString.add(eWebElem.getText());
         }
-        Collections.sort(linkElementsString);
         LOGGER.info("Method return List<String>: " + linkElementsString);
         return linkElementsString;
     }
