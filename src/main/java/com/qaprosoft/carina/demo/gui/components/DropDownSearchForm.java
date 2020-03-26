@@ -2,7 +2,7 @@ package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.pages.DevicePageYouWereLookingFor;
+import com.qaprosoft.carina.demo.gui.pages.DevicePage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.SearchContext;
@@ -51,9 +51,12 @@ public class DropDownSearchForm extends AbstractUIObject {
         return true;
     }
 
-    public DevicePageYouWereLookingFor openRandomDevicePage() {
+    public DevicePage openRandomDevicePage() {
         Random random = new Random();
-        devicesInForm.get(random.nextInt(devicesInForm.size())).click();
-        return new DevicePageYouWereLookingFor(driver);
+        int randomElementList = random.nextInt(devicesInForm.size());
+        LOGGER.info("List elements size equals " + devicesInForm.size() + ".");
+        LOGGER.info("Element's number equals " + randomElementList + ".");
+        devicesInForm.get(randomElementList).click();
+        return new DevicePage(driver);
     }
 }

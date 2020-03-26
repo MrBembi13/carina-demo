@@ -6,16 +6,16 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class DevicePageYouWereLookingFor extends AbstractPage {
+public class DevicePage extends AbstractPage {
 
     @FindBy(xpath = "//h1[@class='specs-phone-name-title']")
     private ExtendedWebElement headText;
 
-    public DevicePageYouWereLookingFor(WebDriver driver) {
+    public DevicePage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isPageHaveSearchTextInHead(String text) {
+    public boolean isPageHasSearchTextInHead(String text) {
         return StringUtils.containsIgnoreCase(headText.getText(), text);
     }
 

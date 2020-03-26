@@ -4,7 +4,7 @@ import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.components.DropDownSearchForm;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.DevicePageYouWereLookingFor;
+import com.qaprosoft.carina.demo.gui.pages.DevicePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -29,8 +29,8 @@ public class WebSearchGSMArenaTest extends AbstractTest {
 
         Assert.assertTrue(dropDownSearchForm.verifyListDevicesHaveText(SEARCH_TEXT), "Drop down search form didn't contains `" + SEARCH_TEXT + "`!");
 
-        DevicePageYouWereLookingFor devicePageYouWereLookingFor = dropDownSearchForm.openRandomDevicePage();
-        Assert.assertTrue(devicePageYouWereLookingFor.isPageOpened(), SEARCH_TEXT + " page was not opened!");
-        Assert.assertTrue(devicePageYouWereLookingFor.isPageHaveSearchTextInHead(SEARCH_TEXT), SEARCH_TEXT + " page didn't have - `" + SEARCH_TEXT + "`!");
+        DevicePage devicePage = dropDownSearchForm.openRandomDevicePage();
+        Assert.assertTrue(devicePage.isPageOpened(), SEARCH_TEXT + " page was not opened!");
+        Assert.assertTrue(devicePage.isPageHasSearchTextInHead(SEARCH_TEXT), SEARCH_TEXT + " page didn't have - `" + SEARCH_TEXT + "`!");
     }
 }
