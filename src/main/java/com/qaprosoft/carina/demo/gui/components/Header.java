@@ -17,7 +17,7 @@ public class Header extends AbstractUIObject {
     private ExtendedWebElement logoButton;
 
     @FindBy(xpath = ".//input[@type='text']")
-    private ExtendedWebElement searchLabel;
+    private ExtendedWebElement searchField;
 
     @FindBy(xpath = ".//a[@class='tip-icon']")
     private ExtendedWebElement tipButton;
@@ -59,7 +59,7 @@ public class Header extends AbstractUIObject {
     public void verifyHeaderBasicElements(SoftAssert softAssert) {
         softAssert.assertTrue(burgerMenuButton.isElementPresent(), "Burger menu was not found!");
         softAssert.assertTrue(logoButton.isElementPresent(), "Logo was not found!");
-        softAssert.assertTrue(searchLabel.isElementPresent(), "Search label was not found!");
+        softAssert.assertTrue(searchField.isElementPresent(), "Search label was not found!");
         softAssert.assertTrue(tipButton.isElementPresent(), "Tip button was not found!");
         softAssert.assertTrue(facebookButton.isElementPresent(), "Facebook button was not found!");
         softAssert.assertTrue(twitterButton.isElementPresent(), "Twitter button was not found!");
@@ -68,5 +68,11 @@ public class Header extends AbstractUIObject {
         softAssert.assertTrue(rssButton.isElementPresent(), "RSS button was not found!");
         softAssert.assertTrue(logInIcon.isElementPresent(), "Log in button was not found!");
         softAssert.assertTrue(signUpButton.isElementPresent(), "Sign up button was not found!");
+    }
+
+    public DropDownSearchForm openDropDownSearchForm(String text) {
+        searchField.type(text);
+        searchField.click();
+        return new DropDownSearchForm(driver);
     }
 }
