@@ -6,7 +6,7 @@
             <class name="com.qaprosoft.carina.demo.WebLoginFormTest">
                 <methods>
                     <include name="testGoodLogIn"/>
-                    <include name="testWrongEmailLogIn"/>
+                    <include name="testWrongFormatEmailOrPasswordLogIn"/>
                 </methods>
             </class>
         </classes>
