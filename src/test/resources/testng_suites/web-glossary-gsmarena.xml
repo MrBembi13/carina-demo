@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="GSMArena glossary tests">
+    <test name="Glossary tests">
+        <classes>
+            <class name="com.qaprosoft.carina.demo.WebGlossaryGSMArenaTest"/>
+        </classes>
+    </test>
+</suite>

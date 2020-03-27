@@ -5,6 +5,7 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -14,11 +15,17 @@ import org.testng.annotations.Test;
  */
 
 public class WebGlossaryGSMArenaTest extends AbstractTest {
+    private HomePage homePage;
+
+    @BeforeMethod
+    public void openHomePage() {
+        homePage = new HomePage(getDriver());
+        homePage.open();
+    }
+
     @Test(description = "Test glossary paragraph's header and text by first letter")
     @MethodOwner(owner = "Vasyl Rudyk")
     public void testGlossaryParagraphHeaderAndTextByFirstLetter() {
-        HomePage homePage = new HomePage(getDriver());
-        homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
         GlossaryPage glossaryPage = homePage.getFooterMenu().openGlossaryPage();
@@ -30,8 +37,6 @@ public class WebGlossaryGSMArenaTest extends AbstractTest {
     @Test(description = "Test glossary paragraph's text by alphabet")
     @MethodOwner(owner = "Vasyl Rudyk")
     public void testGlossaryParagraphTextByAlphabet() {
-        HomePage homePage = new HomePage(getDriver());
-        homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page was not opened!");
 
         GlossaryPage glossaryPage = homePage.getFooterMenu().openGlossaryPage();
