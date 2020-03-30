@@ -52,7 +52,7 @@ public class SignUpPage extends AbstractPage {
         LOGGER.info("Enter password - " + password);
     }
 
-    public boolean toRegister() {
+    public boolean registerRandomUser() {
         Random random = new Random();
         int number = random.nextInt(100000);
         String nickname = "nickname" + number;
