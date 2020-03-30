@@ -2,11 +2,14 @@ package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.demo.gui.pages.SignUpPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
+
+import java.security.Signature;
 
 public class Header extends AbstractUIObject {
 
@@ -74,5 +77,10 @@ public class Header extends AbstractUIObject {
         searchField.type(text);
         searchField.click();
         return new DropDownSearchForm(driver);
+    }
+
+    public SignUpPage openSignUpPage() {
+        signUpButton.click();
+        return new SignUpPage(driver);
     }
 }
