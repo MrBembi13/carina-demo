@@ -30,6 +30,6 @@ public class WebSignUpGSMArenaTest extends AbstractTest {
         SignUpPage signUpPage = homePage.getHeader().openSignUpPage();
         Assert.assertTrue(signUpPage.isPageOpened(), "Sign up page wasn't opened!");
 
-        Assert.assertTrue(signUpPage.getCreateAccountForm().toRegister(), "Registration was failed!");
+        Assert.assertTrue(signUpPage.toRegister(), "Registration was failed!");
     }
 }
