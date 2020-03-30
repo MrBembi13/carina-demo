@@ -20,7 +20,7 @@ public class DevicePage extends AbstractPage {
     }
 
     @Override
-    public boolean isPageOpened(){
+    public boolean isPageOpened() {
         return headText.isElementPresent();
     }
 }

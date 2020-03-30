@@ -3,12 +3,14 @@ package com.qaprosoft.carina.demo.gui.components;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 public class LoginForm extends AbstractUIObject {
+    Logger LOGGER = Logger.getLogger(LoginForm.class);
+
     @FindBy(id = "login-active")
     private ExtendedWebElement logInIcon;
 
@@ -34,10 +36,12 @@ public class LoginForm extends AbstractUIObject {
 
     public void typeEmail(String email) {
         emailField.type(email);
+        LOGGER.info("Enter email - " + email);
     }
 
     public void typePassword(String password) {
         passwordField.type(password);
+        LOGGER.info("Enter password - " + password);
     }
 
     public boolean isLogOutIconButtonPresent() {

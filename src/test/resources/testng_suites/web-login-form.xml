@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="GSMArena login tests">
+    <test name="Login tests">
+        <classes>
+            <class name="com.qaprosoft.carina.demo.WebLoginFormTest">
+                <methods>
+                    <include name="testGoodLogIn"/>
+                    <include name="testWrongFormatEmailOrPasswordLogIn"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
