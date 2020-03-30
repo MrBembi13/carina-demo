@@ -15,16 +15,13 @@
  */
 package com.qaprosoft.carina.demo.gui.components;
 
-import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
+import com.qaprosoft.carina.demo.gui.pages.*;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 
 public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "Home")
@@ -38,6 +35,9 @@ public class FooterMenu extends AbstractUIObject {
 
     @FindBy(linkText = "Glossary")
     private ExtendedWebElement glossaryLink;
+
+    @FindBy(linkText = "Reviews")
+    private ExtendedWebElement reviewsLink;
 
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -61,5 +61,10 @@ public class FooterMenu extends AbstractUIObject {
     public GlossaryPage openGlossaryPage() {
         glossaryLink.click();
         return new GlossaryPage(driver);
+    }
+
+    public ReviewsPage openReviewsPage() {
+        reviewsLink.click();
+        return new ReviewsPage(driver);
     }
 }
