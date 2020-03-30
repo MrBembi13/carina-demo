@@ -52,7 +52,7 @@ public class CreateAccountForm extends AbstractUIObject {
         LOGGER.info("Enter password - " + password);
     }
 
-    public boolean registration() {
+    public boolean toRegister() {
         Random random = new Random();
         int number = random.nextInt(100000);
         String nickname = "nickname" + number;
