@@ -36,10 +36,12 @@ public class LoginForm extends AbstractUIObject {
 
     public void typeEmail(String email) {
         emailField.type(email);
+        LOGGER.info("Enter email - " + email);
     }
 
     public void typePassword(String password) {
         passwordField.type(password);
+        LOGGER.info("Enter password - " + password);
     }
 
     public boolean isLogOutIconButtonPresent() {
@@ -49,8 +51,6 @@ public class LoginForm extends AbstractUIObject {
     public LoginPage login(String email, String password) {
         typeEmail(email);
         typePassword(password);
-        LOGGER.info("Enter email - " + email);
-        LOGGER.info("Enter password - " + password);
         logInButton.click();
         return new LoginPage(driver);
     }

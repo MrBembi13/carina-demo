@@ -20,6 +20,8 @@ public class WebLoginFormTest extends AbstractTest {
     private static final String PASSWORD_GOOD = "changeme";
     private static final String EMAIL_WRONG = "s9rowa1@mail.ru";
     private static final String PASSWORD_WRONG = "changeme1";
+    private static final String EMAIL_WRONG_FORMAT = "s9rowamail.ru";
+    private static final String PASSWORD_WRONG_FORMAT = "chan";
     private HomePage homePage;
 
     @BeforeMethod
@@ -31,8 +33,8 @@ public class WebLoginFormTest extends AbstractTest {
     @DataProvider
     public Object[][] loginData() {
         return new Object[][] {
-                {"s9rowamail.ru", "changeme"},
-                {"s9rowa@mail.ru", "chan"}
+                {EMAIL_WRONG_FORMAT, PASSWORD_GOOD},
+                {EMAIL_GOOD, PASSWORD_WRONG_FORMAT}
         };
     }
 
