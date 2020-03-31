@@ -22,27 +22,11 @@ public class ReviewsPage extends AbstractPage {
         super(driver);
         setPageURL("/reviews.php3");
     }
-/*
-
-    public boolean clickNextButtonIfIsClickable() {
-        if (nextPageButton.isClickable()) {
-            LOGGER.info("Click on 'Next button'");
-            nextPageButton.click();
-        } else {
-            return false;
-        }
-        return true;
-    }
-*/
-
-    public List<ReviewItem> getReviewItemList() {
-        return reviewItemList;
-    }
 
     public boolean verifyReviewsHeaderNameWithNameOnReviewPage() {
-        for (ReviewItem reviewItem : reviewItemList) {
-            String nameReviewItem = reviewItem.getReviewItemName();
-            ReviewItemPage reviewItemPage = reviewItem.openReviewItemPage();
+        for (int i = 0; i < reviewItemList.size(); i++) {
+            String nameReviewItem = reviewItemList.get(i).getReviewItemName();
+            ReviewItemPage reviewItemPage = reviewItemList.get(i).openReviewItemPage();
             String nameReview;
             if (reviewItemPage.isPageOpened()) {
                 nameReview = reviewItemPage.getNameReview();
@@ -52,9 +36,9 @@ public class ReviewsPage extends AbstractPage {
                 return false;
             }
             if (nameReviewItem.equals(nameReview)) {
-                LOGGER.info("Name review item equals name review on the page.");
+                LOGGER.info("`" + nameReviewItem + "` equals `" + nameReview + "`");
             } else {
-                LOGGER.error("Name review item didn't equals name review on the page!");
+                LOGGER.error("`" + nameReviewItem + "` didn't equals `" + nameReview + "`!!!");
                 return false;
             }
             driver.navigate().back();

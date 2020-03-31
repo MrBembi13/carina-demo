@@ -25,6 +25,10 @@ public class ReviewItem extends AbstractUIObject {
         return new ReviewItemPage(driver);
     }
 
+    public ExtendedWebElement getReviewItem() {
+        return reviewItem;
+    }
+
     public String getReviewItemName() {
         return reviewItem.getText();
     }
