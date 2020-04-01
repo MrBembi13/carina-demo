@@ -1,16 +1,16 @@
 package com.qaprosoft.carina.demo.gui.services;
 
+import com.qaprosoft.carina.core.foundation.webdriver.IDriverPool;
 import com.qaprosoft.carina.demo.gui.components.LoginForm;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class LoginService {
-    private static Logger LOGGER = Logger.getLogger(LoginService.class);
+public class LoginService implements IDriverPool {
+    private Logger LOGGER = Logger.getLogger(LoginService.class);
 
-    public static void login(WebDriver driver, String email, String password) {
-        HomePage homePage = new HomePage(driver);
+    public HomePage login(String email, String password) {
+        HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page wasn't opened!");
 
@@ -19,5 +19,6 @@ public class LoginService {
         loginForm.login(email, password);
 
         Assert.assertTrue(loginForm.isLogOutIconButtonPresent(), "User wasn't login on website!");
+        return new HomePage(getDriver());
     }
 }

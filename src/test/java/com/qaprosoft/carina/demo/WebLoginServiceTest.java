@@ -19,6 +19,7 @@ public class WebLoginServiceTest extends AbstractTest {
     public void testLoginService() {
         User user = UserService.getUserList().get(0);
 
-        LoginService.login(getDriver(), user.getEmail(), user.getPassword());
+        LoginService loginService = new LoginService();
+        loginService.login(user.getEmail(), user.getPassword());
     }
 }
