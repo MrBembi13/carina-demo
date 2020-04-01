@@ -4,6 +4,7 @@ import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.services.LoginService;
 import com.qaprosoft.carina.demo.gui.services.UserService;
+import com.qaprosoft.carina.demo.gui.services.components.User;
 import org.testng.annotations.Test;
 
 /**
@@ -16,9 +17,8 @@ public class WebLoginServiceTest extends AbstractTest {
     @Test(description = "Test login with LoginService")
     @MethodOwner(owner = "Vasyl Rudyk")
     public void testLoginService() {
+        User user = UserService.getUserList().get(0);
 
-        System.out.println(UserService.getUserList());
-
-        LoginService.login(getDriver());
+        LoginService.login(getDriver(), user.getEmail(), user.getPassword());
     }
 }
