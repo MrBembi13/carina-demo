@@ -18,6 +18,7 @@ package com.qaprosoft.carina.demo.gui.pages;
 import java.util.List;
 
 import com.qaprosoft.carina.demo.gui.components.Header;
+import com.qaprosoft.carina.demo.gui.components.PhoneFinder;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +40,9 @@ public class HomePage extends AbstractPage {
     @FindBy(id = "header")
     private Header header;
 
+    @FindBy(xpath = "//div[@class='brandmenu-v2 light l-box clearfix']")
+    private PhoneFinder phoneFinderForm;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -49,6 +53,10 @@ public class HomePage extends AbstractPage {
 
     public Header getHeader() {
         return header;
+    }
+
+    public PhoneFinder getPhoneFinderForm() {
+        return phoneFinderForm;
     }
 
     public BrandModelsPage selectBrand(String brand) {
