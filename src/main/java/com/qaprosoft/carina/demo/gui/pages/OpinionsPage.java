@@ -23,6 +23,9 @@ public class OpinionsPage extends AbstractPage {
     @FindBy(xpath = "//span[@class='thumbs-score']")
     private List<ExtendedWebElement> scoreCommentList;
 
+    @FindBy(xpath = "//a[@class='voting-link vote-up']")
+    private List<ExtendedWebElement> goodRateCommentList;
+
     public OpinionsPage(WebDriver driver) {
         super(driver);
     }
@@ -52,6 +55,19 @@ public class OpinionsPage extends AbstractPage {
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+    public boolean verifyGoodRateComment() {
+        int beforeGoodRate = Integer.parseInt(scoreCommentList.get(0).getText());
+        goodRateCommentList.get(0).click();
+        int afterGoodRate = Integer.parseInt(scoreCommentList.get(0).getText());
+        if (beforeGoodRate < afterGoodRate) {
+            LOGGER.info("Comment rating works -> (last rating = " + beforeGoodRate + " and new rating = " + afterGoodRate);
+        } else {
+            LOGGER.error("Comment rating don't work -> (last rating = " + beforeGoodRate + " and new rating = " + afterGoodRate);
+            return false;
         }
         return true;
     }

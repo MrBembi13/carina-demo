@@ -39,4 +39,23 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         opinionsPage.sortByBestRating();
         Assert.assertTrue(opinionsPage.isCommentsSortByBestRating(), "Opinions was not sorted by best rating!");
     }
+
+    @Test(description = "verify whether we can rate opinion")
+    @MethodOwner(owner = "Vasyl Rudyk")
+    public void testRateOpinion() {
+        User user = UserService.getUser();
+        LoginService loginService = new LoginService();
+        HomePage homePage = loginService.login(user.getEmail(), user.getPassword());
+
+        PhonesPage phonesPage = homePage.getPhoneFinderForm().getPhonesPage();
+        Assert.assertTrue(phonesPage.isPageOpened(), "Phones page was not opened!");
+
+        DevicePage devicePage = phonesPage.openRandomDevice();
+        Assert.assertTrue(devicePage.isPageOpened(), "Device page was not opened!");
+
+        OpinionsPage opinionsPage = devicePage.openOpinions();
+        Assert.assertTrue(opinionsPage.isPageOpened(), "Opinions page was not opened!");
+
+        Assert.assertTrue(opinionsPage.verifyGoodRateComment(), "Comment rating didn't work!");
+    }
 }
