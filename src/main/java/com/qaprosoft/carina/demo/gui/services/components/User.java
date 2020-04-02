@@ -1,25 +1,25 @@
 package com.qaprosoft.carina.demo.gui.services.components;
 
 public class User {
-    private String nickname;
+    private String nickName;
     private String email;
     private String password;
 
     public User() {
     }
 
-    public User(String nickname, String email, String password) {
-        this.nickname = nickname;
+    public User(String nickName, String email, String password) {
+        this.nickName = nickName;
         this.email = email;
         this.password = password;
     }
 
     public String getNickname() {
-        return nickname;
+        return nickName;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getEmail() {
@@ -41,7 +41,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "nickname='" + nickname + '\'' +
+                "nickname='" + nickName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

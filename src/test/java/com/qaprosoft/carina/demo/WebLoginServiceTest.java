@@ -17,7 +17,7 @@ public class WebLoginServiceTest extends AbstractTest {
     @Test(description = "Test login with LoginService")
     @MethodOwner(owner = "Vasyl Rudyk")
     public void testLoginService() {
-        User user = UserService.getUserList().get(0);
+        User user = UserService.getUser();
 
         LoginService loginService = new LoginService();
         loginService.login(user.getEmail(), user.getPassword());
