@@ -7,8 +7,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class DevicePage extends AbstractPage {
     private Logger LOGGER = Logger.getLogger(DevicePage.class);
 
@@ -17,8 +15,8 @@ public class DevicePage extends AbstractPage {
     @FindBy(xpath = "//h1[@class='specs-phone-name-title']")
     private ExtendedWebElement headText;
 
-    @FindBy(xpath = "//li[@class='article-info-meta-link light']//a")
-    private List<ExtendedWebElement> infoButtons;
+    @FindBy(xpath = "//li[@class='article-info-meta-link light']//a[contains(text(), 'Opinions')]")
+    private ExtendedWebElement opinionsButtons;
 
     public DevicePage(WebDriver driver) {
         super(driver);
@@ -28,19 +26,8 @@ public class DevicePage extends AbstractPage {
         return StringUtils.containsIgnoreCase(headText.getText(), text);
     }
 
-    public ExtendedWebElement getInfoElement(String text) {
-        for (ExtendedWebElement e: infoButtons) {
-            if (e.getText().equalsIgnoreCase(text)) {
-                LOGGER.info(e.getText() + " will be open.");
-                return e;
-            }
-        }
-        LOGGER.error(text + " didn't found!");
-        return null;
-    }
-
     public OpinionsPage openOpinions() {
-        getInfoElement(OPINIONS).click();
+        opinionsButtons.click();
         return new OpinionsPage(driver);
     }
 

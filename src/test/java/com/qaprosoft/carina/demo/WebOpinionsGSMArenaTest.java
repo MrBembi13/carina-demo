@@ -26,7 +26,7 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         LoginService loginService = new LoginService();
         HomePage homePage = loginService.login(user.getEmail(), user.getPassword());
 
-        PhonesPage phonesPage = homePage.getPhoneFinderForm().getPhonesPage();
+        PhonesPage phonesPage = homePage.getPhoneFinderForm().openRandomPhonesPage();
         Assert.assertTrue(phonesPage.isPageOpened(), "Phones page was not opened!");
 
         DevicePage devicePage = phonesPage.openRandomDevice();
@@ -35,9 +35,9 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         OpinionsPage opinionsPage = devicePage.openOpinions();
         Assert.assertTrue(opinionsPage.isPageOpened(), "Opinions page was not opened!");
 
-        Assert.assertTrue(opinionsPage.isPossibleSortByBestRating(), "Drop down menu for 'Sort by' had not on page!");
+        Assert.assertTrue(opinionsPage.isPossibleSortByBestRating(), "Drop down menu for 'Sort by' was not found on page!");
         opinionsPage.sortByBestRating();
-        Assert.assertTrue(opinionsPage.isCommentsSortByBestRating(), "Opinions was not sorted by best rating!");
+        Assert.assertTrue(opinionsPage.isCommentsSortByBestRating(), "Opinions were not sorted by best rating!");
     }
 
     @Test(description = "verify whether we can rate opinion")
@@ -47,7 +47,7 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         LoginService loginService = new LoginService();
         HomePage homePage = loginService.login(user.getEmail(), user.getPassword());
 
-        PhonesPage phonesPage = homePage.getPhoneFinderForm().getPhonesPage();
+        PhonesPage phonesPage = homePage.getPhoneFinderForm().openRandomPhonesPage();
         Assert.assertTrue(phonesPage.isPageOpened(), "Phones page was not opened!");
 
         DevicePage devicePage = phonesPage.openRandomDevice();
@@ -56,6 +56,6 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         OpinionsPage opinionsPage = devicePage.openOpinions();
         Assert.assertTrue(opinionsPage.isPageOpened(), "Opinions page was not opened!");
 
-        Assert.assertTrue(opinionsPage.verifyGoodRateComment(), "Comment rating didn't work!");
+        opinionsPage.verifyGoodRateComment();
     }
 }
