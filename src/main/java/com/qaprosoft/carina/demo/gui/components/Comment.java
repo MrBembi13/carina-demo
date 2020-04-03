@@ -16,6 +16,9 @@ public class Comment extends AbstractUIObject {
     @FindBy(xpath = ".//span[@class='thumbs-score']")
     private ExtendedWebElement scoreComment;
 
+    @FindBy(xpath = ".//li[@class='upost']")
+    private ExtendedWebElement dateComment;
+
     public Comment(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
@@ -26,6 +29,10 @@ public class Comment extends AbstractUIObject {
 
     public ExtendedWebElement getGoodRateComment() {
         return goodRateComment;
+    }
+
+    public ExtendedWebElement getDateComment() {
+        return dateComment;
     }
 
     public void upvoteRating() {

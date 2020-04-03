@@ -19,7 +19,7 @@ import org.testng.annotations.Test;
  */
 public class WebOpinionsGSMArenaTest extends AbstractTest {
 
-    @Test(description = "verify whether opinions was sorted by best rating")
+    @Test(description = "verify whether opinions were sorted by best rating")
     @MethodOwner(owner = "Vasyl Rudyk")
     public void testOpinionsSortByBestRating() {
         User user = UserService.getUser();
@@ -57,5 +57,27 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         Assert.assertTrue(opinionsPage.isPageOpened(), "Opinions page was not opened!");
 
         opinionsPage.verifyGoodRateComment();
+    }
+
+    @Test(description = "verify whether opinions were sorted by newest first")
+    @MethodOwner(owner = "Vasyl Rudyk")
+    public void testOpinionsSortedByNewestFirst() {
+        User user = UserService.getUser();
+        LoginService loginService = new LoginService();
+        HomePage homePage = loginService.login(user.getEmail(), user.getPassword());
+
+        PhonesPage phonesPage = homePage.getPhoneFinderForm().openRandomPhonesPage();
+        Assert.assertTrue(phonesPage.isPageOpened(), "Phones page was not opened!");
+
+        DevicePage devicePage = phonesPage.openRandomDevice();
+        Assert.assertTrue(devicePage.isPageOpened(), "Device page was not opened!");
+
+        OpinionsPage opinionsPage = devicePage.openOpinions();
+        Assert.assertTrue(opinionsPage.isPageOpened(), "Opinions page was not opened!");
+
+        Assert.assertTrue(opinionsPage.isPossibleSortByBestRating(), "Drop down menu for 'Sort by' was not found on page!");
+        opinionsPage.sortByNewestFirst();
+
+        Assert.assertTrue(opinionsPage.isCommentsSortByNewestFirst(), "Opinions were not sorted by Newest first!");
     }
 }
