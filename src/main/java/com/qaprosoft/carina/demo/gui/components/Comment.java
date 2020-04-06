@@ -23,8 +23,8 @@ public class Comment extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public ExtendedWebElement getScoreComment() {
-        return scoreComment;
+    public String getScoreComment() {
+        return scoreComment.getText();
     }
 
     public ExtendedWebElement getGoodRateComment() {
