@@ -88,17 +88,24 @@ public class OpinionsPage extends AbstractPage {
         LocalDate firstLocalDate;
         //  Second date for compare
         LocalDate secondLocalDate;
-        //  List short name moths
+        //  List dates
+        List<LocalDate> dateList = new ArrayList<>();
 
+        //  Parse and add dates to list
+        for (Comment comment: commentsList) {
+            String date = comment.getStringDateComment();
+            dateList.add(DateUtil.parseDate(date));
+            LOGGER.info("'" + date + "' added to list.");
+        }
+
+        LOGGER.info("All dates: " + dateList);
         //  Comparison two dates
-        for (int i = 0; i < commentsList.size() - 1; i++) {
-            String firstDate = commentsList.get(i).getStringDateComment();
-            firstLocalDate = DateUtil.parseDate(firstDate);
+        for (int i = 0; i < dateList.size() - 1; i++) {
+            firstLocalDate = dateList.get(i);
             LOGGER.info("First date = " + firstLocalDate);
 
             for (int j = i + 1; j < commentsList.size(); j++) {
-                String secondDate = commentsList.get(j).getStringDateComment();
-                secondLocalDate = DateUtil.parseDate(secondDate);
+                secondLocalDate = dateList.get(j);
                 LOGGER.info("Second date = " + secondLocalDate);
 
                 //  Compare two dates
