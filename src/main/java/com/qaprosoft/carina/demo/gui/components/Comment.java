@@ -31,8 +31,8 @@ public class Comment extends AbstractUIObject {
         return goodRateComment;
     }
 
-    public ExtendedWebElement getDateComment() {
-        return dateComment;
+    public String getStringDateComment() {
+        return dateComment.getText();
     }
 
     public void upvoteRating() {

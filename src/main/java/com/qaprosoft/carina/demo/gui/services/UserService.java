@@ -1,8 +1,8 @@
 package com.qaprosoft.carina.demo.gui.services;
 
 import com.qaprosoft.carina.core.foundation.utils.R;
-import com.qaprosoft.carina.demo.gui.services.components.Constants;
-import com.qaprosoft.carina.demo.gui.services.components.User;
+import com.qaprosoft.carina.demo.gui.components.Constants;
+import com.qaprosoft.carina.demo.gui.components.User;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 
@@ -33,7 +33,7 @@ public class UserService {
     public static List<User> getUserList() {
         List<User> userList = new ArrayList<>();
         String usersPool = R.TESTDATA.get(Constants.USERS_POOL);
-        List<String> usersPoolList = Arrays.asList(usersPool.split(Constants.SPLIT_SYMBOL));
+        List<String> usersPoolList = Arrays.asList(usersPool.split(Constants.SPLIT_USERS));
         for (String str: usersPoolList) {
                 User user = new User();
                 user.setNickName(R.TESTDATA.get(str + ".nickname"));

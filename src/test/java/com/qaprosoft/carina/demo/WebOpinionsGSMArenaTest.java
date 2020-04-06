@@ -8,7 +8,7 @@ import com.qaprosoft.carina.demo.gui.pages.OpinionsPage;
 import com.qaprosoft.carina.demo.gui.pages.PhonesPage;
 import com.qaprosoft.carina.demo.gui.services.LoginService;
 import com.qaprosoft.carina.demo.gui.services.UserService;
-import com.qaprosoft.carina.demo.gui.services.components.User;
+import com.qaprosoft.carina.demo.gui.components.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -75,7 +75,6 @@ public class WebOpinionsGSMArenaTest extends AbstractTest {
         OpinionsPage opinionsPage = devicePage.openOpinions();
         Assert.assertTrue(opinionsPage.isPageOpened(), "Opinions page was not opened!");
 
-        Assert.assertTrue(opinionsPage.isPossibleSortByBestRating(), "Drop down menu for 'Sort by' was not found on page!");
         opinionsPage.sortByNewestFirst();
 
         Assert.assertTrue(opinionsPage.isCommentsSortByNewestFirst(), "Opinions were not sorted by Newest first!");
