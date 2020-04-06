@@ -92,7 +92,7 @@ public class OpinionsPage extends AbstractPage {
         List<LocalDate> dateList = new ArrayList<>();
 
         //  Parse and add dates to list
-        for (Comment comment: commentsList) {
+        for (Comment comment : commentsList) {
             String date = comment.getStringDateComment();
             dateList.add(DateUtil.parseDate(date));
             LOGGER.info("'" + date + "' added to list.");
@@ -104,21 +104,20 @@ public class OpinionsPage extends AbstractPage {
             firstLocalDate = dateList.get(i);
             LOGGER.info("First date = " + firstLocalDate);
 
-            for (int j = i + 1; j < commentsList.size(); j++) {
-                secondLocalDate = dateList.get(j);
-                LOGGER.info("Second date = " + secondLocalDate);
+            secondLocalDate = dateList.get(i+1);
+            LOGGER.info("Second date = " + secondLocalDate);
 
-                //  Compare two dates
-                if (firstLocalDate.isAfter(secondLocalDate) || firstLocalDate.isEqual(secondLocalDate)) {
-                    //  First date newer than second date or dates equal
-                    LOGGER.info("'" + firstLocalDate + " newer than " + secondLocalDate + "' or 'dates equal'");
-                } else {
-                    //  First date older than second date
-                    //  It's wrong and return false
-                    LOGGER.error(firstLocalDate + " older than " + secondLocalDate);
-                    return false;
-                }
+            //  Compare two dates
+            if (firstLocalDate.isAfter(secondLocalDate) || firstLocalDate.isEqual(secondLocalDate)) {
+                //  First date newer than second date or dates equal
+                LOGGER.info("'" + firstLocalDate + " newer than " + secondLocalDate + "' or 'dates equal'");
+            } else {
+                //  First date older than second date
+                //  It's wrong and return false
+                LOGGER.error(firstLocalDate + " older than " + secondLocalDate);
+                return false;
             }
+
         }
         return true;
     }
