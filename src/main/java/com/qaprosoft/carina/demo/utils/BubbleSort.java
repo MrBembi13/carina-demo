@@ -4,9 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BubbleSort {
+
     private static List<Integer> numbers = Arrays.asList(7, 8, 1, 4, 5);
 
-    public static void isListSorted() {
+    public static void sort() {
+        System.out.println(numbers);
         for (int j = 0; j < numbers.size(); j++) {
             for (int i = 1; i < numbers.size() - j; i++) {
                 if (!(numbers.get(i-1) <= numbers.get(i))) {
@@ -16,9 +18,10 @@ public class BubbleSort {
                 }
             }
         }
+        System.out.println(numbers);
     }
 
     public static void main(String[] args) {
-        BubbleSort.isListSorted();
+        sort();
     }
 }
