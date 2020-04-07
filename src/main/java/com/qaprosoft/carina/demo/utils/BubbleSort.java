@@ -25,10 +25,10 @@ public class BubbleSort {
     public static String verifyNumbers(List<Integer> integerList) {
         for (int i = 0; i < integerList.size() - 1; i++) {
             if (integerList.get(i) > integerList.get(i + 1)) {
-                return "Method wasn't sorted.";
+                return "List wasn't sorted.";
             }
         }
-        return "Method was sorted.";
+        return "List was sorted.";
     }
 
     public static int sumNumbers(List<Integer> integerList) {
