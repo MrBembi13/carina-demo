@@ -65,10 +65,10 @@ public class OpinionsPage extends AbstractPage {
     public boolean isCommentsSortByBestRating() {
         for (int i = 0; i < commentsList.size() - 1; i++) {
             for (int j = i + 1; j < commentsList.size(); j++) {
-                if (Integer.parseInt(commentsList.get(i).getScoreComment().getText()) >= Integer.parseInt(commentsList.get(j).getScoreComment().getText())) {
-                    LOGGER.info(commentsList.get(i).getScoreComment().getText() + " more or equals " + commentsList.get(j).getScoreComment().getText());
+                if (Integer.parseInt(commentsList.get(i).getStringScoreComment()) >= Integer.parseInt(commentsList.get(j).getStringScoreComment())) {
+                    LOGGER.info(commentsList.get(i).getStringScoreComment() + " more or equals " + commentsList.get(j).getStringScoreComment());
                 } else {
-                    LOGGER.error(commentsList.get(i).getScoreComment().getText() + " less than " + commentsList.get(j).getScoreComment().getText());
+                    LOGGER.error(commentsList.get(i).getStringScoreComment() + " less than " + commentsList.get(j).getStringScoreComment());
                     return false;
                 }
             }
@@ -77,9 +77,9 @@ public class OpinionsPage extends AbstractPage {
     }
 
     public void verifyGoodRateComment() {
-        int beforeGoodRate = Integer.parseInt(commentsList.get(0).getScoreComment().getText());
+        int beforeGoodRate = Integer.parseInt(commentsList.get(0).getStringScoreComment());
         commentsList.get(0).upvoteRating();
-        int afterGoodRate = Integer.parseInt(commentsList.get(0).getScoreComment().getText());
+        int afterGoodRate = Integer.parseInt(commentsList.get(0).getStringScoreComment());
         Assert.assertTrue(beforeGoodRate < afterGoodRate, "Comment rating was not upvoted -> (last rating = " + beforeGoodRate + " and new rating = " + afterGoodRate + ")!");
     }
 

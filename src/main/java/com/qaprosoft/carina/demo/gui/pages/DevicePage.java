@@ -16,7 +16,7 @@ public class DevicePage extends AbstractPage {
     private ExtendedWebElement headText;
 
     @FindBy(xpath = "//li[@class='article-info-meta-link light']//a[contains(text(), 'Opinions')]")
-    private ExtendedWebElement opinionsButtons;
+    private ExtendedWebElement opinionsButton;
 
     public DevicePage(WebDriver driver) {
         super(driver);
@@ -27,7 +27,7 @@ public class DevicePage extends AbstractPage {
     }
 
     public OpinionsPage openOpinions() {
-        opinionsButtons.click();
+        opinionsButton.click();
         return new OpinionsPage(driver);
     }
 
