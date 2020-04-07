@@ -6,7 +6,7 @@ import java.util.List;
 public class BubbleSort {
 
     private static List<Integer> numbers = Arrays.asList(7, 8, 1, 4, 5, 2, 9, 3, 6);
-    private static List<Integer> numbers2 = Arrays.asList(21, 48, 14, 4, 2, 8, 18, 39, 99, 12, 5);
+    private static List<Integer> numbers2 = Arrays.asList(21, 48, 14, 4, 2, 8, 18, 39, 99, 12, 5, 25);
 
     public static void sort(List<Integer> integerList) {
         System.out.println(integerList);
@@ -40,7 +40,7 @@ public class BubbleSort {
     }
 
     public static int maxNumberInList(List<Integer> integerList) {
-        int max = 0;
+        int max = Integer.MIN_VALUE;
         for (int i : integerList) {
             if (max < i) {
                 max = i;
@@ -50,7 +50,7 @@ public class BubbleSort {
     }
 
     public static String twoMinNumbersInList(List<Integer> integerList) {
-        int min1 = 100, min2 = 100;
+        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
         int index = 0;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < integerList.size(); j++) {
@@ -80,8 +80,8 @@ public class BubbleSort {
 
     public static int maxNumberAmongEvenIndexes(List<Integer> integerList) {
         int max = 0;
-        for (int i = 2; i < integerList.size(); i++) {
-            if ((max < integerList.get(i)) && (i % 2 == 0)) {
+        for (int i = 2; i < integerList.size(); i += 2) {
+            if ((max < integerList.get(i))) {
                 max = integerList.get(i);
             }
         }
