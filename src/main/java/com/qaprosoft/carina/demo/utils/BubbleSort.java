@@ -9,7 +9,7 @@ public class BubbleSort {
     private static List<Integer> numbers2 = Arrays.asList(21, 48, 14, 4, 2, 8, 18, 39, 99, 12, 5, 25);
 
     public static void sort(List<Integer> integerList) {
-        System.out.println(integerList);
+        System.out.println("Before sort\n" + integerList);
         for (int j = 0; j < integerList.size(); j++) {
             for (int i = 1; i < integerList.size() - j; i++) {
                 if (!(integerList.get(i - 1) <= integerList.get(i))) {
@@ -19,16 +19,16 @@ public class BubbleSort {
                 }
             }
         }
-        System.out.println(integerList);
+        System.out.println("After sort\n" + integerList);
     }
 
     public static String verifyNumbers(List<Integer> integerList) {
         for (int i = 0; i < integerList.size() - 1; i++) {
             if (integerList.get(i) > integerList.get(i + 1)) {
-                return "List wasn't sorted.";
+                return "List wasn't sorted: " + integerList;
             }
         }
-        return "List was sorted.";
+        return "List was sorted: " + integerList;
     }
 
     public static int sumNumbers(List<Integer> integerList) {
@@ -40,7 +40,7 @@ public class BubbleSort {
     }
 
     public static int maxNumberInList(List<Integer> integerList) {
-        int max = Integer.MIN_VALUE;
+        int max = integerList.get(0);
         for (int i : integerList) {
             if (max < i) {
                 max = i;
@@ -50,10 +50,10 @@ public class BubbleSort {
     }
 
     public static String twoMinNumbersInList(List<Integer> integerList) {
-        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+        int min1 = integerList.get(0), min2 = integerList.get(1);
         int index = 0;
         for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < integerList.size(); j++) {
+            for (int j = 1; j < integerList.size(); j++) {
                 if (i == 1) {
                     if ((min2 > integerList.get(j)) && !(index == j)) {
                         min2 = integerList.get(j);
@@ -79,8 +79,8 @@ public class BubbleSort {
     }
 
     public static int maxNumberAmongEvenIndexes(List<Integer> integerList) {
-        int max = 0;
-        for (int i = 2; i < integerList.size(); i += 2) {
+        int max = integerList.get(2);
+        for (int i = 4; i < integerList.size(); i += 2) {
             if ((max < integerList.get(i))) {
                 max = integerList.get(i);
             }
