@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.services.components;
+package com.qaprosoft.carina.demo.gui.components;
 
 public class User {
     private String nickName;

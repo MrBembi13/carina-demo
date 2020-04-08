@@ -4,7 +4,7 @@ import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.services.LoginService;
 import com.qaprosoft.carina.demo.gui.services.UserService;
-import com.qaprosoft.carina.demo.gui.services.components.User;
+import com.qaprosoft.carina.demo.gui.components.User;
 import org.testng.annotations.Test;
 
 /**
