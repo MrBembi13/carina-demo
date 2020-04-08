@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "success": true,
+    "code": 204,
+    "message": "The request was handled successfully and the response contains no body content.",
+    "rateLimit": {
+      "limit": 30,
+      "remaining": 29,
+      "reset": 2
+    }
+  },
+  "result": null
+}

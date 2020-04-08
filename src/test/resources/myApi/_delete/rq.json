@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "success": true,
+    "code": 200,
+    "message": "OK. Everything worked as expected.",
+    "rateLimit": {
+      "limit": 30,
+      "remaining": 29,
+      "reset": 2
+    }
+  },
+  "result": {
+    "id": "13073",
+    "first_name": "${first_name}",
+    "last_name": "${last_name}",
+    "gender": "${gender}",
+    "dob": null,
+    "email": "jkfjj@example.com",
+    "phone": null,
+    "website": null,
+    "address": null,
+    "status": null,
+    "_links": {
+      "self": {
+        "href": "https://gorest.co.in/public-api/users/13073"
+      },
+      "edit": {
+        "href": "https://gorest.co.in/public-api/users/13073"
+      },
+      "avatar": {
+        "href": null
+      }
+    }
+  }
+}
