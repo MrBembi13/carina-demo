@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="GSMArena reviews tests">
+    <test name="Reviews tests">
+        <classes>
+            <class name="com.qaprosoft.carina.demo.WebReviewsGSMArenaTest"/>
+        </classes>
+    </test>
+</suite>

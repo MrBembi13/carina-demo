@@ -9,8 +9,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class ReviewItem extends AbstractUIObject {
 
-    @FindBy(xpath = ".//h3")
-    private ExtendedWebElement reviewItem;
+    @FindBy(xpath = ".//h3//a")
+    private ExtendedWebElement reviewText;
+
+    @FindBy(xpath = ".//div[@class='review-item-media-wrap']//img")
+    private ExtendedWebElement reviewItemPhoto;
 
     public ReviewItem(WebDriver driver) {
         super(driver);
@@ -21,15 +24,15 @@ public class ReviewItem extends AbstractUIObject {
     }
 
     public ReviewItemPage openReviewItemPage() {
-        reviewItem.click();
+        reviewText.click();
         return new ReviewItemPage(driver);
     }
 
-    public ExtendedWebElement getReviewItem() {
-        return reviewItem;
+    public String getReviewItemName() {
+        return reviewText.getText();
     }
 
-    public String getReviewItemName() {
-        return reviewItem.getText();
+    public String getReviewItemPhoto() {
+        return reviewItemPhoto.getAttribute("src");
     }
 }
