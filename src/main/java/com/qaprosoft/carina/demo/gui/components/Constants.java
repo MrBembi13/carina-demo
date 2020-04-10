@@ -27,4 +27,6 @@ public class Constants {
     public static final String SPLIT_URL = "/";
 
     public static final String SPLIT_CSS_FOR_URL = "'";
+
+    public static final String NAME_WEBSITE = "GSMArena";
 }
