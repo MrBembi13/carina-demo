@@ -30,6 +30,7 @@ public class ReviewsPage extends AbstractPage {
     private ExtendedWebElement searchButton;
 
     private int randomReviewItem = random.nextInt(reviewItemList.size());
+    private String searchText;
 
     public ReviewsPage(WebDriver driver) {
         super(driver);
@@ -59,20 +60,33 @@ public class ReviewsPage extends AbstractPage {
         return true;
     }
 
-    public void verifySearchSystemOnReviewsPage() {
+    public void typeWrongText() {
         searchField.type(Constants.WRONG_SEARCH_TEXT_REVIEWS);
+        LOGGER.info("Type - '" + Constants.WRONG_SEARCH_TEXT_REVIEWS + "'");
         searchButton.click();
-        Assert.assertTrue(reviewItemList.isEmpty());
+    }
 
+    public boolean isListItemsEmpty() {
+        return reviewItemList.isEmpty();
+    }
+
+    public void clearSearchFiled() {
         searchField.getElement().clear();
+    }
 
+    public void getSearchText() {
         Assert.assertNotNull(RandomUtil.getRandomPhonesName(), "Method which get random phone name didn't work!");
-        String searchText = RandomUtil.getRandomPhonesName();
+        searchText = RandomUtil.getRandomPhonesName();
+    }
+    public void typeValidatedText() {
+        getSearchText();
         searchField.type(searchText);
         searchButton.click();
+    }
 
+    public boolean verifyGoodSearch() {
         String headerText = reviewItemList.get(randomReviewItem).getReviewItemName();
-        Assert.assertTrue(headerText.contains(searchText), "Header text hadn't contain search text!");
+        return headerText.contains(searchText);
     }
 
     public ReviewItem getRandomReviewItem() {

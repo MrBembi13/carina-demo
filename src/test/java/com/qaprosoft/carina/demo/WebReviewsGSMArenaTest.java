@@ -39,7 +39,13 @@ public class WebReviewsGSMArenaTest extends AbstractTest {
         ReviewsPage reviewsPage = homePage.getFooterMenu().openReviewsPage();
         Assert.assertTrue(reviewsPage.isPageOpened(), "Reviews page wasn't opened!");
 
-        reviewsPage.verifySearchSystemOnReviewsPage();
+        reviewsPage.typeWrongText();
+        Assert.assertTrue(reviewsPage.isListItemsEmpty(), "Search was good when it should bad!");
+
+        reviewsPage.clearSearchFiled();
+
+        reviewsPage.typeValidatedText();
+        Assert.assertTrue(reviewsPage.verifyGoodSearch(), "Header text hadn't contain search text!");
     }
 
     @Test(description = "test equal photos")
