@@ -21,4 +21,12 @@ public class Constants {
     public static final String SPLIT_DATE = " ";
 
     public static final List<String> SHORT_NAME_MONTHS = new ArrayList<>(Arrays.asList("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"));
+
+    public static final String WRONG_SEARCH_TEXT_REVIEWS = "asdfgh";
+
+    public static final String SPLIT_URL = "/";
+
+    public static final String SPLIT_CSS_FOR_URL = "'";
+
+    public static final String NAME_WEBSITE = "GSMArena";
 }

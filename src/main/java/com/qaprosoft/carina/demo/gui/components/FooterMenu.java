@@ -23,6 +23,10 @@ import org.openqa.selenium.support.FindBy;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "Home")
     private ExtendedWebElement homeLink;
@@ -38,6 +42,9 @@ public class FooterMenu extends AbstractUIObject {
 
     @FindBy(linkText = "Reviews")
     private ExtendedWebElement reviewsLink;
+
+    @FindBy(xpath = "//div[@id='footmenu']//a[text()='Android app']")
+    private ExtendedWebElement androidAppLink;
 
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -66,5 +73,12 @@ public class FooterMenu extends AbstractUIObject {
     public ReviewsPage openReviewsPage() {
         reviewsLink.click();
         return new ReviewsPage(driver);
+    }
+
+    public AndroidAppPage openAndroidAppPage() {
+        androidAppLink.click();
+        List<String> windows = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windows.get(1));
+        return new AndroidAppPage(driver);
     }
 }
